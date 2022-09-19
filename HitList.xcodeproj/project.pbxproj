@@ -14,6 +14,13 @@
 		5E1914E128CA1AA900674B9E /* HitList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5E1914DF28CA1AA900674B9E /* HitList.xcdatamodeld */; };
 		5E1914E328CA1AAF00674B9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E1914E228CA1AAF00674B9E /* Assets.xcassets */; };
 		5E1914E628CA1AAF00674B9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E1914E428CA1AAF00674B9E /* LaunchScreen.storyboard */; };
+		5E19156C28CB656600674B9E /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E19156B28CB656600674B9E /* AddViewController.swift */; };
+		5E19156E28CB66BE00674B9E /* ModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E19156D28CB66BE00674B9E /* ModelView.swift */; };
+		5E19157028CD0F7C00674B9E /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E19156F28CD0F7C00674B9E /* DetailsViewController.swift */; };
+		5E19157428CFD81D00674B9E /* DetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E19157328CFD81D00674B9E /* DetailImageCell.swift */; };
+		5E19157628CFE7AE00674B9E /* PhotoDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E19157528CFE7AD00674B9E /* PhotoDetailsVC.swift */; };
+		5E19159D28D1279600674B9E /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E19159C28D1279500674B9E /* MainCollectionViewCell.swift */; };
+		5E73ABBA28D279C400F7EFB6 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E73ABB928D279C400F7EFB6 /* Person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +33,13 @@
 		5E1914E228CA1AAF00674B9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E1914E528CA1AAF00674B9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E1914E728CA1AAF00674B9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E19156B28CB656600674B9E /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		5E19156D28CB66BE00674B9E /* ModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelView.swift; sourceTree = "<group>"; };
+		5E19156F28CD0F7C00674B9E /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		5E19157328CFD81D00674B9E /* DetailImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageCell.swift; sourceTree = "<group>"; };
+		5E19157528CFE7AD00674B9E /* PhotoDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailsVC.swift; sourceTree = "<group>"; };
+		5E19159C28D1279500674B9E /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
+		5E73ABB928D279C400F7EFB6 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +80,13 @@
 				5E1914E428CA1AAF00674B9E /* LaunchScreen.storyboard */,
 				5E1914E728CA1AAF00674B9E /* Info.plist */,
 				5E1914DF28CA1AA900674B9E /* HitList.xcdatamodeld */,
+				5E73ABB928D279C400F7EFB6 /* Person.swift */,
+				5E19156B28CB656600674B9E /* AddViewController.swift */,
+				5E19156D28CB66BE00674B9E /* ModelView.swift */,
+				5E19156F28CD0F7C00674B9E /* DetailsViewController.swift */,
+				5E19157328CFD81D00674B9E /* DetailImageCell.swift */,
+				5E19157528CFE7AD00674B9E /* PhotoDetailsVC.swift */,
+				5E19159C28D1279500674B9E /* MainCollectionViewCell.swift */,
 			);
 			path = HitList;
 			sourceTree = "<group>";
@@ -141,9 +162,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E19156E28CB66BE00674B9E /* ModelView.swift in Sources */,
+				5E19156C28CB656600674B9E /* AddViewController.swift in Sources */,
 				5E1914DB28CA1AA900674B9E /* ViewController.swift in Sources */,
 				5E1914E128CA1AA900674B9E /* HitList.xcdatamodeld in Sources */,
+				5E73ABBA28D279C400F7EFB6 /* Person.swift in Sources */,
+				5E19157628CFE7AE00674B9E /* PhotoDetailsVC.swift in Sources */,
+				5E19157028CD0F7C00674B9E /* DetailsViewController.swift in Sources */,
 				5E1914D728CA1AA900674B9E /* AppDelegate.swift in Sources */,
+				5E19159D28D1279600674B9E /* MainCollectionViewCell.swift in Sources */,
+				5E19157428CFD81D00674B9E /* DetailImageCell.swift in Sources */,
 				5E1914D928CA1AA900674B9E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,6 +319,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 83838Q8A6R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HitList/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -318,6 +347,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 83838Q8A6R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HitList/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
