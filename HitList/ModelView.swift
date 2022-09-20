@@ -61,6 +61,7 @@ class ModelView {
                 let person = result as! PersonEntity
                 if(person == selectedPerson)
                 {
+                    
                     person.deletedDate = Date()
                     try context.save()
                     

@@ -14,12 +14,7 @@ class ViewController:UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var modelView = ModelView()
-    var firstLoad = true
-    
-    
     var deleteBool = false
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -136,6 +131,7 @@ extension ViewController: UICollectionViewDelegate{
             
             
             vc.indexPath =  Int(indexPath.row)
+            
             vc.lat = (selectedPerson.value(forKey: "lat") as? Double)!
             vc.lon = (selectedPerson.value(forKey: "lon") as? Double)!
             vc.text = (selectedPerson.value(forKey: "name") as? String)!

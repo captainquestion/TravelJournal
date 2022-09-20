@@ -169,7 +169,7 @@ class AddViewController: UIViewController, UIImagePickerControllerDelegate, UINa
                 modelView.save(id: personList.count as NSNumber, name: nameText.text!, lat: Double(latText.text!)!, lon: Double(longText.text!)!, image1: (imageView1.image?.pngData()!)!, image2: (imageView2.image?.pngData()!)!, image3: (imageView3.image?.pngData()!)!)
                 navigationController?.popViewController(animated: true)
             }else {
-                let alert2 = UIAlertController(title: "Error!", message: "Please enter valid values.", preferredStyle: .alert)
+                let alert2 = UIAlertController(title: "Error !", message: "Please enter valid values.", preferredStyle: .alert)
                 alert2.addAction(UIAlertAction(title: "OK", style: .cancel))
                 
                 present(alert2, animated: true)
