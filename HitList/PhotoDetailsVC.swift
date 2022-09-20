@@ -14,6 +14,7 @@ class PhotoDetailsVC: UIViewController {
     var textImageTitle: String?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background_3.jpeg")!)
 
         // Do any additional setup after loading the view.
         title = textImageTitle

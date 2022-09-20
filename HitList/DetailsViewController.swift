@@ -28,8 +28,10 @@ class DetailsViewController: UIViewController, CLLocationManagerDelegate, UIColl
     let manager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background_3.jpeg")!)
 
         title = text
+        
         addImage(image1: imageVal1, image2: imageVal2, image3: imageVal3)
         collectionView.dataSource = self
         collectionView.delegate = self

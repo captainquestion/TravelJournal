@@ -23,7 +23,7 @@ class ViewController:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background_3.jpeg")!)
         
         modelView.fetchData()
         
@@ -107,7 +107,6 @@ extension ViewController: UICollectionViewDelegate{
             let alert = UIAlertController(title: "Delete Mode", message: "Are you sure about deleting ?", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in
-                print("Yes'e bastim")
                 
                 self.modelView.delete(indexPathRow: indexPath.row)
                 

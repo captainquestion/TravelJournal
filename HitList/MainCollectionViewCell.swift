@@ -14,9 +14,10 @@ class MainCollectionViewCell: UICollectionViewCell {
     
     var imageVal: UIImage?
     var titleLblVal: String?
-    
+
     func setup(image: UIImage, title: String){
         siteImageView.image = imageVal
         titleLbl.text = titleLblVal
     }
+    
 }

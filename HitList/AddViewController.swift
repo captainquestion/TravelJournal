@@ -35,6 +35,8 @@ class AddViewController: UIViewController, UIImagePickerControllerDelegate, UINa
     
     
     override func viewDidLoad() {
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background_3.jpeg")!)
+
         super.viewDidLoad()
         
         locSwitch.isOn = false
@@ -60,29 +62,29 @@ class AddViewController: UIViewController, UIImagePickerControllerDelegate, UINa
     func pickerFunc(){
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        print("1.")
+        
         
         let actionSheet = UIAlertController(title: "Photo source", message: "Choose a source", preferredStyle: .actionSheet)
         
         actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: {action in
-            print("2")
+            
             imagePicker.sourceType = .camera
             self.present(imagePicker, animated: true, completion: nil)
         }))
         actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: {action in
-            print("3")
+           
             imagePicker.sourceType = .photoLibrary
             self.present(imagePicker, animated: true, completion: nil)
         }))
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {(action:UIAlertAction) in
-            print("4")
+           
             
             
         }))
         present(actionSheet, animated: true, completion: nil)    }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        print("I m in")
+       
         guard let location = locations.first else{
             return
             
