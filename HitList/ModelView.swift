@@ -12,6 +12,8 @@ import UIKit
 class ModelView {
     
     var firstLoad = true
+    
+    // function returns an array of PersonEntities in personList array if the record doesnt have a deletedData value
     func nonDeletedNotes() -> [PersonEntity]
     {
         var noDeleteNoteList = [PersonEntity]()
@@ -25,6 +27,8 @@ class ModelView {
         return noDeleteNoteList
     }
     
+    
+    //creating NSManagedObjectContext for persistentContainer and fetch request to fetching inputs from PersonEntity DB and appending the values into personList array
     func fetchData(){
         if(firstLoad)
         {
@@ -47,6 +51,7 @@ class ModelView {
         }
     }
     
+    //Stamping the entries within the PersonEntityDB with deletedData value for not including in the list.
     func delete(indexPathRow: Int) {
         let selectedPerson : PersonEntity!
         selectedPerson = nonDeletedNotes()[indexPathRow]
@@ -63,6 +68,7 @@ class ModelView {
                 {
                     
                     person.deletedDate = Date()
+                    
                     try context.save()
                     
                 }
@@ -74,6 +80,7 @@ class ModelView {
         }
     }
     
+    //saving data to the database and personList array with respect to given parameters.
     func save(id: NSNumber, name: String, lat: Double, lon: Double, image1: Data, image2: Data, image3: Data){
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
@@ -81,13 +88,13 @@ class ModelView {
         
         let entity = NSEntityDescription.entity(forEntityName: "PersonEntity", in: context)
         let newNote = PersonEntity(entity: entity!, insertInto: context)
-        newNote.id = id //personList.count as NSNumber
-        newNote.name = name //nameText.text
-        newNote.lat = lat //Double(latText.text!)!
-        newNote.lon = lon  //Double(longText.text!)!
-        newNote.image1 = image1//(imageView1.image?.pngData()!)
-        newNote.image2 = image2//(imageView2.image?.pngData()!)
-        newNote.image3 = image3//(imageView3.image?.pngData()!)
+        newNote.id = id 
+        newNote.name = name
+        newNote.lat = lat
+        newNote.lon = lon
+        newNote.image1 = image1
+        newNote.image2 = image2
+        newNote.image3 = image3
         do
         {
             try context.save()

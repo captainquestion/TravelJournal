@@ -11,6 +11,7 @@ import MapKit
 
 class DetailsViewController: UIViewController, CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    //instance for using the MapKit
     @IBOutlet weak var mapView: MKMapView!
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -25,13 +26,15 @@ class DetailsViewController: UIViewController, CLLocationManagerDelegate, UIColl
     var imageVal3: UIImage?
     var imageArray: [UIImage] = []
     
+    
     let manager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Setting the background image
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background_3.jpeg")!)
 
         title = text
-        
+        // Appending imageArray with the image values provided
         addImage(image1: imageVal1, image2: imageVal2, image3: imageVal3)
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -52,6 +55,7 @@ class DetailsViewController: UIViewController, CLLocationManagerDelegate, UIColl
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
 
+        //calling goToMap with given latitude and longitude
         goToMap(lat: lat, lon: lon)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -59,6 +63,7 @@ class DetailsViewController: UIViewController, CLLocationManagerDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        //Instance of the cell within the collection view. cell's image is equal to the imageArray provided by the ViewController
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailImageCell", for: indexPath) as! DetailImageCell
         cell.detail_image.image = imageArray[indexPath.row]
         
@@ -66,6 +71,7 @@ class DetailsViewController: UIViewController, CLLocationManagerDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //Upon clicking images, user is prompted to see the image in PhotoDetailsVC view which has the function of rotating the image
         let image = imageArray[indexPath.row]
         let vc = UIStoryboard(name: "Main", bundle:nil).instantiateViewController(withIdentifier: "PhotoDetailsVCID") as! PhotoDetailsVC
         
@@ -79,16 +85,16 @@ class DetailsViewController: UIViewController, CLLocationManagerDelegate, UIColl
 
     
     func goToMap(lat: Double, lon: Double){
-        
+        //taking location parameters and assign it as CLLocation
         let location = CLLocation(latitude: lat, longitude: lon)
-        
+        //changing the CLLocation instance into CLLocationCoordinate2D
         let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        
+        //determining the zoom rate
         let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-        
+        //setting the region
         let region = MKCoordinateRegion(center: coordinate, span: span)
         mapView.setRegion(region, animated: true)
-        
+        //adding a annotation pin to the given region
         let pin = MKPointAnnotation()
         pin.coordinate = coordinate
         mapView.addAnnotation(pin)

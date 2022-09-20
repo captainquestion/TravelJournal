@@ -25,6 +25,7 @@ class AddViewController: UIViewController, UIImagePickerControllerDelegate, UINa
     @IBOutlet weak var imgBtn2: UIButton!
     @IBOutlet weak var imgBtn3: UIButton!
     
+    //CLLocation instance
     let manager = CLLocationManager()
     
     var selectedPerson: PersonEntity? = nil
@@ -35,31 +36,37 @@ class AddViewController: UIViewController, UIImagePickerControllerDelegate, UINa
     
     
     override func viewDidLoad() {
+        //Setting the background image
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background_3.jpeg")!)
 
         super.viewDidLoad()
         
         locSwitch.isOn = false
+        //delegates for the textFields
         nameText.delegate = self
         latText.delegate = self
         longText.delegate = self
 
-        
+        //Setting the CLlocationmanager to have a better accuracy in detecting the location
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.delegate = self
+        //asking for the permissions
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
         // Do any additional setup after loading the view.
     }
+    //Setting for the textField keyboard to disappear when touching outside of the textfield
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    //Setting the textField keyboard to disappear once hitting the return key in the keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-    
+    //Function used to pop an alert once image buttons tapped to determine the source of the image to be uploaded
     func pickerFunc(){
+        //Setting imagePicker delegate
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         
@@ -67,12 +74,12 @@ class AddViewController: UIViewController, UIImagePickerControllerDelegate, UINa
         let actionSheet = UIAlertController(title: "Photo source", message: "Choose a source", preferredStyle: .actionSheet)
         
         actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: {action in
-            
+            //Source type is camera
             imagePicker.sourceType = .camera
             self.present(imagePicker, animated: true, completion: nil)
         }))
         actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: {action in
-           
+           //Source type is library
             imagePicker.sourceType = .photoLibrary
             self.present(imagePicker, animated: true, completion: nil)
         }))
@@ -89,7 +96,8 @@ class AddViewController: UIViewController, UIImagePickerControllerDelegate, UINa
             return
             
         }
-        
+        // If the locationBool is true locationManager starts to updating the location and sets the gps outputs into latitude and longitude textfields
+        // If the locationBool is false, locationManager stops updating and setting the textfields with empty string
         if(locationBool == true){
             manager.startUpdatingLocation()
           
@@ -105,6 +113,7 @@ class AddViewController: UIViewController, UIImagePickerControllerDelegate, UINa
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        // Once the image is picked, setting the image in the imageView one by one
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             if (currentImageIndex == 0) {
                 imageView1.contentMode = .scaleToFill
@@ -128,6 +137,7 @@ class AddViewController: UIViewController, UIImagePickerControllerDelegate, UINa
     }
     
     @IBAction func switchPressed(_ sender: UISwitch) {
+        //location update determined
         if sender.isOn == true{
             print("Switch ON")
             manager.startUpdatingLocation()

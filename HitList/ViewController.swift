@@ -4,7 +4,7 @@
 //
 //  Created by canberk yılmaz on 2022-09-08.
 //
-
+//
 import UIKit
 import CoreData
 var personList = [PersonEntity]()
@@ -13,18 +13,23 @@ class ViewController:UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    //creating instance of ModelView
     var modelView = ModelView()
     var deleteBool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Setting background image
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background_3.jpeg")!)
         
+        //fetching the data
         modelView.fetchData()
         
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        //collectionView layout properties
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
         let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
@@ -38,6 +43,8 @@ class ViewController:UIViewController {
     }
     
     @IBAction func deleteBtn(_ sender: Any) {
+        
+        //Delete button changes the state of deleteBool
         if deleteBool == false{
             deleteBool = true
             collectionView.reloadData()
@@ -58,16 +65,21 @@ class ViewController:UIViewController {
 
 extension ViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        //creating instance for refering the custom cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell", for: indexPath) as! MainCollectionViewCell
         
+        //creating a PersonEntity instance and appending it to the nonDeletedNotes which returns an array
         let thisPerson: PersonEntity!
         thisPerson = modelView.nonDeletedNotes()[indexPath.row]
         
-        
+        //Setting image and text properties of the cell with the instance's parameters
         cell.siteImageView.image = UIImage(data: thisPerson.value(forKey: "image1") as! Data)
         cell.titleLbl.text = (thisPerson.value(forKey: "name") as? String)!
         cell.layer.borderColor = UIColor.lightGray.cgColor
         cell.layer.borderWidth = 0.5
+        
+        //If deleteBool is true images becomes blurry which triggers with delete button.
         if deleteBool == true{
             cell.siteImageView.alpha = 0.5
         }else {
@@ -95,7 +107,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout{
 extension ViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-    
+    // Upon clicking the cells, If deleting mode is on user will be prompted with an alert to make sure about about deleting the value.
         if deleteBool == true{
             
             
@@ -118,7 +130,7 @@ extension ViewController: UICollectionViewDelegate{
             deleteBool = false
             
             
-            
+        // Upon clicking, if deleting mode is off, user will be directed to the DetailsViewController with information about the cell is shared with the DetailsViewController 
         }else{
             
             
